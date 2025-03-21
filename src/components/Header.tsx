@@ -34,7 +34,7 @@ const Header = () => {
           <div className="relative h-10 w-36 overflow-hidden">
             <img 
               src="/logo.svg" 
-              alt="DentMarketing Logo" 
+              alt="ClimaDent Logo" 
               className="h-full w-auto object-contain"
               onError={(e) => {
                 // Fallback if logo fails to load
@@ -44,8 +44,8 @@ const Header = () => {
                 const parentElement = target.parentElement;
                 if (parentElement) {
                   const fallbackText = document.createElement('span');
-                  fallbackText.className = 'text-dental-blue font-bold text-xl';
-                  fallbackText.innerText = 'DentMarketing';
+                  fallbackText.className = 'text-[#4361EE] font-bold text-xl';
+                  fallbackText.innerText = 'ClimaDent';
                   parentElement.appendChild(fallbackText);
                 }
               }}
@@ -55,11 +55,11 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          <a href="#servicios" className="text-foreground hover:text-dental-blue transition-smooth">Servicios</a>
-          <a href="#testimonios" className="text-foreground hover:text-dental-blue transition-smooth">Testimonios</a>
-          <a href="#casos" className="text-foreground hover:text-dental-blue transition-smooth">Casos de Éxito</a>
-          <a href="#proceso" className="text-foreground hover:text-dental-blue transition-smooth">Nuestro Proceso</a>
-          <a href="#contacto" className="btn-primary">Contactar</a>
+          <a href="#servicios" className="text-foreground hover:text-[#4361EE] transition-smooth">Servicios</a>
+          <a href="#testimonios" className="text-foreground hover:text-[#4361EE] transition-smooth">Testimonios</a>
+          <a href="#casos" className="text-foreground hover:text-[#4361EE] transition-smooth">Casos de Éxito</a>
+          <a href="#proceso" className="text-foreground hover:text-[#4361EE] transition-smooth">Nuestro Proceso</a>
+          <a href="#contacto" className="btn-primary bg-gradient-to-r from-[#4361EE] to-[#7E69AB] text-white">Contactar</a>
         </nav>
 
         {/* Mobile Menu Toggle */}
@@ -83,35 +83,35 @@ const Header = () => {
         <nav className="flex flex-col space-y-6 p-8 text-center">
           <a 
             href="#servicios" 
-            className="text-lg font-medium hover:text-dental-blue transition-smooth"
+            className="text-lg font-medium hover:text-[#4361EE] transition-smooth"
             onClick={() => setMobileMenuOpen(false)}
           >
             Servicios
           </a>
           <a 
             href="#testimonios" 
-            className="text-lg font-medium hover:text-dental-blue transition-smooth"
+            className="text-lg font-medium hover:text-[#4361EE] transition-smooth"
             onClick={() => setMobileMenuOpen(false)}
           >
             Testimonios
           </a>
           <a 
             href="#casos" 
-            className="text-lg font-medium hover:text-dental-blue transition-smooth"
+            className="text-lg font-medium hover:text-[#4361EE] transition-smooth"
             onClick={() => setMobileMenuOpen(false)}
           >
             Casos de Éxito
           </a>
           <a 
             href="#proceso" 
-            className="text-lg font-medium hover:text-dental-blue transition-smooth"
+            className="text-lg font-medium hover:text-[#4361EE] transition-smooth"
             onClick={() => setMobileMenuOpen(false)}
           >
             Nuestro Proceso
           </a>
           <a 
             href="#contacto" 
-            className="btn-primary mx-auto w-full max-w-xs"
+            className="btn-primary bg-gradient-to-r from-[#4361EE] to-[#7E69AB] mx-auto w-full max-w-xs"
             onClick={() => setMobileMenuOpen(false)}
           >
             Contactar
