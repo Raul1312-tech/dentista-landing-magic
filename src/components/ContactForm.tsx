@@ -51,25 +51,27 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contacto" className="section-padding relative overflow-hidden">
+    <section id="contacto" className="section-padding relative overflow-hidden bg-gradient-to-b from-[#f8faff] to-white">
       {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-radial from-dental-blue/5 to-transparent"></div>
-      <div className="absolute top-40 -right-40 w-96 h-96 bg-dental-blue/10 rounded-full blur-3xl"></div>
+      <div className="absolute -top-40 left-1/3 w-96 h-96 bg-[#4361EE]/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 right-10 w-72 h-72 bg-[#7E69AB]/10 rounded-full blur-3xl"></div>
       
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <h2 className="heading-lg mb-4 animate-on-scroll">
-              ¿Listo para Transformar tu Clínica Dental?
+              Completa este Cuestionario Antes de Nuestra Reunión
             </h2>
             <p className="text-lg text-dental-darkgray max-w-2xl mx-auto animate-on-scroll">
-              Completa el formulario a continuación y nuestro equipo de especialistas se pondrá en contacto contigo para diseñar una estrategia personalizada.
+              Para preparar una estrategia personalizada, necesitamos conocer mejor tu clínica.
+              Rellena estos datos que revisaremos juntos durante nuestra próxima reunión.
             </p>
           </div>
           
-          <div className="bg-white rounded-2xl shadow-xl p-6 md:p-10 glass-darker animate-on-scroll">
+          <div className="bg-white rounded-2xl shadow-xl p-6 md:p-10 glass-darker animate-on-scroll hover:shadow-2xl transition-all duration-300">
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* First row - Name and Clinic Name */}
+              <div className="space-y-6">
                 <div>
                   <label htmlFor="fullName" className="label-field">Nombre completo *</label>
                   <input
@@ -79,7 +81,7 @@ const ContactForm = () => {
                     required
                     value={formData.fullName}
                     onChange={handleChange}
-                    className="input-field"
+                    className="input-field hover:border-[#4361EE]/50 focus:border-[#4361EE] transition-colors"
                     placeholder="Dr. Juan Pérez"
                   />
                 </div>
@@ -93,13 +95,14 @@ const ContactForm = () => {
                     required
                     value={formData.clinicName}
                     onChange={handleChange}
-                    className="input-field"
+                    className="input-field hover:border-[#4361EE]/50 focus:border-[#4361EE] transition-colors"
                     placeholder="Clínica Dental Sonrisa"
                   />
                 </div>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Second row - Numbers */}
+              <div className="space-y-6">
                 <div>
                   <label htmlFor="cabinets" className="label-field">Número de gabinetes *</label>
                   <input
@@ -110,7 +113,7 @@ const ContactForm = () => {
                     min="1"
                     value={formData.cabinets}
                     onChange={handleChange}
-                    className="input-field"
+                    className="input-field hover:border-[#4361EE]/50 focus:border-[#4361EE] transition-colors"
                     placeholder="3"
                   />
                 </div>
@@ -125,7 +128,7 @@ const ContactForm = () => {
                     min="0"
                     value={formData.currentVisits}
                     onChange={handleChange}
-                    className="input-field"
+                    className="input-field hover:border-[#4361EE]/50 focus:border-[#4361EE] transition-colors"
                     placeholder="20"
                   />
                 </div>
@@ -140,12 +143,13 @@ const ContactForm = () => {
                     min="1"
                     value={formData.targetVisits}
                     onChange={handleChange}
-                    className="input-field"
+                    className="input-field hover:border-[#4361EE]/50 focus:border-[#4361EE] transition-colors"
                     placeholder="50"
                   />
                 </div>
               </div>
               
+              {/* Third row - Previous experience */}
               <div>
                 <label htmlFor="previousExperience" className="label-field">Experiencias previas con marketing digital</label>
                 <textarea
@@ -153,17 +157,18 @@ const ContactForm = () => {
                   name="previousExperience"
                   value={formData.previousExperience}
                   onChange={handleChange}
-                  className="input-field min-h-[120px]"
+                  className="input-field min-h-[120px] hover:border-[#4361EE]/50 focus:border-[#4361EE] transition-colors"
                   placeholder="Cuéntanos sobre tus experiencias previas con marketing digital..."
                 ></textarea>
               </div>
               
+              {/* Submit button */}
               <div className="pt-4">
                 <button
                   type="submit"
                   disabled={isSubmitting || submitted}
                   className={cn(
-                    "btn-primary w-full py-4 text-lg font-medium transition-all duration-300 relative overflow-hidden",
+                    "btn-primary w-full py-4 text-lg font-medium transition-all duration-300 relative overflow-hidden bg-gradient-to-r from-[#4361EE] to-[#7E69AB] hover:shadow-lg",
                     (isSubmitting || submitted) && "bg-dental-darkblue"
                   )}
                 >
@@ -171,7 +176,7 @@ const ContactForm = () => {
                     "flex items-center justify-center gap-2 transition-opacity duration-300",
                     (isSubmitting || submitted) && "opacity-0"
                   )}>
-                    Solicitar Información <Send size={18} />
+                    Enviar Información <Send size={18} />
                   </span>
                   
                   {isSubmitting && (
