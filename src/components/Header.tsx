@@ -1,122 +1,174 @@
-
 import React, { useState, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 10);
     };
-    
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    handleScroll(); // Check on mount
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-  };
-
   return (
-    <header 
+    <header
       className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-300 ease-in-out",
-        isScrolled 
-          ? "py-3 bg-white/90 backdrop-blur-md shadow-sm" 
-          : "py-5 bg-transparent"
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        isScrolled
+          ? "py-3 bg-[#0b0e1a]/80 backdrop-blur-md border-b border-white/5"
+          : "py-4 bg-transparent"
       )}
     >
-      <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
-        <a href="#" className="flex items-center">
-          <div className="relative h-10 w-36 overflow-hidden">
-            <img 
-              src="/logo.svg" 
-              alt="ClimaDent Logo" 
-              className="h-full w-auto object-contain"
-              onError={(e) => {
-                // Fallback if logo fails to load
-                const target = e.target as HTMLImageElement;
-                target.onerror = null;
-                target.style.display = 'none';
-                const parentElement = target.parentElement;
-                if (parentElement) {
-                  const fallbackText = document.createElement('span');
-                  fallbackText.className = 'text-[#4361EE] font-bold text-xl';
-                  fallbackText.innerText = 'ClimaDent';
-                  parentElement.appendChild(fallbackText);
-                }
-              }}
-            />
-          </div>
-        </a>
+      <div className="container mx-auto px-8">
+        <div className="flex justify-between items-center">
+          {/* Logo */}
+          <a href="/" className="flex items-center">
+            {process.env.NEXT_PUBLIC_SITE_LOGO ? (
+              <img
+                src={process.env.NEXT_PUBLIC_SITE_LOGO}
+                alt={process.env.NEXT_PUBLIC_SITE_NAME || "Landing Magic"}
+                width={180}
+                height={45}
+                className="object-contain h-10"
+                onError={(e) => {
+                  // Fallback to text if image fails to load
+                  e.currentTarget.style.display = 'none';
+                  const parent = e.currentTarget.parentElement;
+                  if (parent) {
+                    const span = document.createElement('span');
+                    span.className = 'text-white font-bold text-xl';
+                    span.textContent = process.env.NEXT_PUBLIC_SITE_NAME || "Landing Magic";
+                    parent.appendChild(span);
+                  }
+                }}
+              />
+            ) : (
+              <span className="text-white font-bold text-xl">
+                {process.env.NEXT_PUBLIC_SITE_NAME || "Landing Magic"}
+              </span>
+            )}
+          </a>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          <a href="#servicios" className="text-foreground hover:text-[#4361EE] transition-smooth">Servicios</a>
-          <a href="#testimonios" className="text-foreground hover:text-[#4361EE] transition-smooth">Testimonios</a>
-          <a href="#casos" className="text-foreground hover:text-[#4361EE] transition-smooth">Casos de Éxito</a>
-          <a href="#proceso" className="text-foreground hover:text-[#4361EE] transition-smooth">Nuestro Proceso</a>
-          <a href="#contacto" className="btn-primary bg-gradient-to-r from-[#4361EE] to-[#7E69AB] text-white">Contactar</a>
-        </nav>
+          {/* Desktop navigation */}
+          <nav className="hidden md:flex items-center space-x-8">
+            {/* Navigation Links */}
+            <a
+              href="#servicios"
+              className="text-white/90 hover:text-white transition-colors duration-200"
+            >
+              Servicios
+            </a>
+            <a
+              href="#casos"
+              className="text-white/90 hover:text-white transition-colors duration-200"
+            >
+              Casos de Éxito
+            </a>
+            <a
+              href="#proceso"
+              className="text-white/90 hover:text-white transition-colors duration-200"
+            >
+              Nuestro Proceso
+            </a>
+            <a
+              href="#testimonios"
+              className="text-white/90 hover:text-white transition-colors duration-200"
+            >
+              Testimonios
+            </a>
+            <a
+              href="#faq"
+              className="text-white/90 hover:text-white transition-colors duration-200"
+            >
+              Preguntas
+            </a>
+            <a
+              href="#contacto"
+              className="bg-white text-[#141b2d] px-5 py-2 rounded-md font-medium hover:bg-white/90 transition-colors duration-200"
+            >
+              Contacto
+            </a>
+          </nav>
 
-        {/* Mobile Menu Toggle */}
-        <button 
-          className="md:hidden focus:outline-none"
-          onClick={toggleMobileMenu}
-          aria-label="Toggle menu"
-        >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+          {/* Mobile menu button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden text-white"
+            aria-label="Toggle mobile menu"
+          >
+            {isMobileMenuOpen ? (
+              <X size={24} />
+            ) : (
+              <Menu size={24} />
+            )}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Navigation */}
-      <div 
+      {/* Mobile navigation */}
+      <div
         className={cn(
-          "fixed inset-0 bg-white z-40 transition-transform duration-300 ease-in-out md:hidden",
-          mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+          "md:hidden fixed inset-0 z-40 bg-[#0b0e1a]/95 backdrop-blur-md transition-transform duration-300 transform",
+          isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
         )}
-        style={{ top: '60px' }}
       >
-        <nav className="flex flex-col space-y-6 p-8 text-center">
-          <a 
-            href="#servicios" 
-            className="text-lg font-medium hover:text-[#4361EE] transition-smooth"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            Servicios
-          </a>
-          <a 
-            href="#testimonios" 
-            className="text-lg font-medium hover:text-[#4361EE] transition-smooth"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            Testimonios
-          </a>
-          <a 
-            href="#casos" 
-            className="text-lg font-medium hover:text-[#4361EE] transition-smooth"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            Casos de Éxito
-          </a>
-          <a 
-            href="#proceso" 
-            className="text-lg font-medium hover:text-[#4361EE] transition-smooth"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            Nuestro Proceso
-          </a>
-          <a 
-            href="#contacto" 
-            className="btn-primary bg-gradient-to-r from-[#4361EE] to-[#7E69AB] mx-auto w-full max-w-xs"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            Contactar
-          </a>
-        </nav>
+        <div className="container mx-auto px-8 py-20">
+          <nav className="flex flex-col space-y-6 items-center">
+            <a
+              href="#servicios"
+              className="text-white/90 hover:text-white transition-colors duration-200 text-xl"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Servicios
+            </a>
+            <a
+              href="#casos"
+              className="text-white/90 hover:text-white transition-colors duration-200 text-xl"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Casos de Éxito
+            </a>
+            <a
+              href="#proceso"
+              className="text-white/90 hover:text-white transition-colors duration-200 text-xl"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Nuestro Proceso
+            </a>
+            <a
+              href="#testimonios"
+              className="text-white/90 hover:text-white transition-colors duration-200 text-xl"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Testimonios
+            </a>
+            <a
+              href="#faq"
+              className="text-white/90 hover:text-white transition-colors duration-200 text-xl"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Preguntas
+            </a>
+            <a
+              href="#contacto"
+              className="bg-white text-[#141b2d] px-6 py-3 rounded-md font-medium hover:bg-white/90 transition-colors duration-200 text-xl"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Contacto
+            </a>
+          </nav>
+        </div>
       </div>
     </header>
   );

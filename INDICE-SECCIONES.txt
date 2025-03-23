@@ -1,0 +1,63 @@
+= ÍNDICE DE SECCIONES DE LA WEB DENTISTA-LANDING =
+
+1. HEADER
+   - Barra de navegación principal
+   - Logo
+   - Menú de navegación
+   - Botón de contacto
+
+2. HERO (SECCIÓN PRINCIPAL)
+   - Fondo con partículas tecnológicas
+   - Título principal con efectos luminosos
+   - Subtítulo descriptivo
+   - Botones CTA (Completar cuestionario y Ver casos)
+   - Sección de vídeo
+
+3. SERVICIOS
+   - Título de sección
+   - Tarjetas de servicios (4 tarjetas):
+     * Campañas en Redes Sociales
+     * Community Manager
+     * SEO y Posicionamiento
+     * Protocolos de Venta
+
+4. TESTIMONIOS
+   - Título de sección
+   - Carrusel/Slider de testimonios
+   - Avatares y nombres de clientes
+
+5. CASOS DE ÉXITO
+   - Título de sección
+   - Galería de casos
+   - Métricas y resultados
+
+6. ROADMAP / PROCESO
+   - Título de sección
+   - Pasos del proceso de trabajo
+   - Iconos o ilustraciones
+
+7. CONTACTO / FORMULARIO
+   - Título de sección
+   - Formulario de contacto
+   - Información adicional
+
+8. FOOTER
+   - Logo
+   - Enlaces de navegación
+   - Información de contacto
+   - Redes sociales
+   - Derechos de autor
+
+= ELEMENTOS VISUALES GLOBALES =
+
+- Fondo oscuro con efecto de partículas tecnológicas
+- Efectos de brillo (tech-glow) en elementos destacados
+- Bordes luminosos (tech-border) en tarjetas y componentes
+- Efectos de glassmorphism (glass-card, glass-navbar)
+- Gradientes en azul (#4361EE) y morado (#7209B7)
+- Animaciones en hover y scroll
+
+= NOTAS =
+Para referirte a una sección específica, puedes usar: "Sección X" o el nombre 
+de la sección directamente. Por ejemplo: "Quiero cambiar el Hero" o 
+"Necesito modificar la Sección 3 (Servicios)". 

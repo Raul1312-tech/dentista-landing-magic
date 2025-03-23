@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -117,6 +116,22 @@ export default {
 					'0%, 100%': { transform: 'translateY(0)' },
 					'50%': { transform: 'translateY(-10px)' }
 				},
+				'pulse-glow': {
+					'0%': { opacity: '0.6', transform: 'scale(0.98)' },
+					'50%': { opacity: '1', transform: 'scale(1)' },
+					'100%': { opacity: '0.6', transform: 'scale(0.98)' }
+				},
+				'float-3d': {
+					'0%': { transform: 'translateY(0) translateZ(0)' },
+					'33%': { transform: 'translateY(-8px) translateZ(5px)' },
+					'66%': { transform: 'translateY(4px) translateZ(-3px)' },
+					'100%': { transform: 'translateY(0) translateZ(0)' }
+				},
+				'depth-pulse': {
+					'0%': { filter: 'blur(4px)', opacity: '0.5', transform: 'scale(0.96)' },
+					'50%': { filter: 'blur(2px)', opacity: '0.9', transform: 'scale(1.03)' },
+					'100%': { filter: 'blur(4px)', opacity: '0.5', transform: 'scale(0.96)' }
+				},
 				'scale': {
 					'0%': { transform: 'scale(0.95)', opacity: '0' },
 					'100%': { transform: 'scale(1)', opacity: '1' }
@@ -135,6 +150,9 @@ export default {
 				'fade-in-left': 'fade-in-left 0.6s ease-out',
 				'pulse-slow': 'pulse-slow 3s infinite ease-in-out',
 				'float': 'float 5s infinite ease-in-out',
+				'pulse-glow': 'pulse-glow 4s infinite ease-in-out',
+				'float-3d': 'float-3d 8s infinite ease-in-out',
+				'depth-pulse': 'depth-pulse 6s infinite ease-in-out',
 				'scale': 'scale 0.5s ease-out',
 				'blur-in': 'blur-in 0.5s ease-out',
 			},
